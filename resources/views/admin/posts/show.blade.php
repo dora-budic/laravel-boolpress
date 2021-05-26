@@ -4,7 +4,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <a href="{{route('admin.posts.index')}}" class="clr-green">Go Back</a>
+      <a href="{{route('admin.posts.index')}}" class="clr-green text-uppercase">Go Back</a>
     </div>
   </div>
     <div class="row justify-content-center">

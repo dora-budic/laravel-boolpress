@@ -9,12 +9,12 @@
   </div>
     <div class="row justify-content-center">
       <div class="col-md-8">
-        <form action="{{route('admin.posts.store')}}" method="post">
+        <form action="{{route('admin.posts.update', ['post' => $post->id])}}" method="post">
           @csrf
-          @method('POST')
+          @method('PUT')
           <div class="form-group">
             <label for="title">Title</label>
-            <input class="form-control @error('title') is-invalid @enderror" id="title" type="text" name="title" value="{{old('title')}}">
+            <input class="form-control @error('title') is-invalid @enderror" id="title" type="text" name="title" value="{{old('title', $post->title)}}">
             <div>
               @error('title')
                 <small class="text-danger">{{$message}}</small>
@@ -23,7 +23,7 @@
           </div>
           <div class="form-group">
             <label for="content">Content</label>
-            <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content" rows="8">{{old('content')}}</textarea>
+            <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content" rows="8">{{old('content', $post->content)}}</textarea>
             <div>
               @error('content')
                 <small class="text-danger">{{$message}}</small>

@@ -14,8 +14,8 @@
               <a href="{{route('admin.posts.show',['post'=>$post->slug])}}">
                 <div class="card-header">
                   {{$post->title}}
+                  <img src="{{$post->image}}" alt="{{$post->title}}">
                 </div>
-                <img src="{{$post->image}}" alt="{{$post->title}}">
               </a>
                 <div class="card-body">
                   <div>

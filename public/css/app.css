@@ -10942,3 +10942,7 @@ a.text-dark:focus {
   }
 }
 
+main .card img {
+  width: 100%;
+}
+

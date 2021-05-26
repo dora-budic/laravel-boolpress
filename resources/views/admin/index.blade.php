@@ -19,5 +19,6 @@
             </div>
         </div>
     </div>
+    <a href="{{route('admin.posts.index')}}">Posts</a>
 </div>
 @endsection

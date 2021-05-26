@@ -40,6 +40,7 @@ class PostController extends Controller
     {
       $request->validate([
         'title' => 'required|string|max:255',
+        'image' => 'string',
         'content' => 'required|string',
       ]);
 
@@ -59,9 +60,11 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(string $slug)
     {
-        //
+      $post = Post::where('slug','=',$slug)->first();
+
+      return view('admin.posts.show', compact('post'));
     }
 
     /**
@@ -86,6 +89,7 @@ class PostController extends Controller
     {
       $request->validate([
         'title' => 'required|string|max:255',
+        'image' => 'string',
         'content' => 'required|string',
       ]);
 

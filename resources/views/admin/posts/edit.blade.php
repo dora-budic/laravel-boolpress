@@ -22,6 +22,15 @@
             </div>
           </div>
           <div class="form-group">
+            <label for="image">Image link</label>
+            <input class="form-control @error('image') is-invalid @enderror" id="image" type="text" name="image" value="{{old('image', $post->image)}}">
+            <div>
+              @error('image')
+                <small class="text-danger">{{$message}}</small>
+              @enderror
+            </div>
+          </div>
+          <div class="form-group">
             <label for="content">Content</label>
             <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content" rows="8">{{old('content', $post->content)}}</textarea>
             <div>

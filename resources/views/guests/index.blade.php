@@ -12,7 +12,6 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
                 color: #7BA114;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
@@ -92,7 +91,13 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{route('posts.index')}}">Posts</a>
+                  @if (Route::has('login'))
+                    @auth
+                      <a href="{{route('admin.posts.index')}}">Posts</a>
+                    @else
+                      <a href="{{route('posts.index')}}">Posts</a>
+                    @endauth
+                  @endif
                 </div>
             </div>
         </div>

@@ -4,7 +4,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12 text-center">
-      <h3>New post</h3>
+      <h3 class="clr-green">New post</h3>
     </div>
   </div>
     <div class="row justify-content-center">
@@ -13,7 +13,7 @@
           @csrf
           @method('POST')
           <div class="form-group">
-            <label for="title">Title</label>
+            <label for="title" class="clr-green">Title</label>
             <input class="form-control @error('title') is-invalid @enderror" id="title" type="text" name="title" value="{{old('title')}}">
             <div>
               @error('title')
@@ -22,7 +22,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="image">Image link</label>
+            <label for="image" class="clr-green">Image link</label>
             <input class="form-control @error('image') is-invalid @enderror" id="image" type="text" name="image" value="{{old('image')}}">
             <div>
               @error('image')
@@ -31,7 +31,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="content">Content</label>
+            <label for="content" class="clr-green">Content</label>
             <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content" rows="8">{{old('content')}}</textarea>
             <div>
               @error('content')
@@ -39,7 +39,7 @@
               @enderror
             </div>
           </div>
-          <button class="btn btn-primary"type="submit">Save</button>
+          <button class="my-btn" type="submit">Save</button>
         </form>
       </div>
     </div>

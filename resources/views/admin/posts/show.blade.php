@@ -4,22 +4,22 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <a href="{{route('admin.posts.index')}}">Go Back</a>
+      <a href="{{route('admin.posts.index')}}" class="clr-green">Go Back</a>
     </div>
   </div>
     <div class="row justify-content-center">
-      <div class="col-md-3">
+      <div class="col-md-8">
         <div class="card">
-          <div class="card-header">{{$post->title}}</div>
+          <div class="card-header clr-green">{{$post->title}}</div>
           <img src="{{$post->image}}" alt="{{$post->title}}">
           <div class="card-body">
             {{$post->content}}
-            <div>
-              <a href="{{route('admin.posts.edit',['post' => $post->id])}}" class="btn btn-primary">Edit</a>
-              <form class="" action="{{route('admin.posts.destroy',['post' => $post->id])}}" method="post">
+            <div class="mt-3">
+              <a href="{{route('admin.posts.edit',['post' => $post->id])}}" class="my-btn">Edit</a>
+              <form class="d-inline-block" action="{{route('admin.posts.destroy',['post' => $post->id])}}" method="post">
                 @csrf
                 @method('DELETE')
-                <input class="btn btn-primary" type="submit" name="delete" value="Delete">
+                <input class="my-btn-tr" type="submit" name="delete" value="Delete">
               </form>
             </div>
           </div>

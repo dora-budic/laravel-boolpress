@@ -10942,7 +10942,57 @@ a.text-dark:focus {
   }
 }
 
-main .card img {
+.my-btn {
+  background-color: #7BA114;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.my-btn-tr {
+  background-color: #fff;
+  color: #7BA114;
+  border: 1px solid #7BA114;
+  padding: 3px 10px;
+  border-radius: 5px;
+}
+
+.clr-green {
+  color: #7BA114;
+}
+
+#app nav a {
+  color: #7BA114;
+}
+
+#app nav a:hover {
+  color: #4EA250;
+}
+
+main .container .card a {
+  text-decoration: none;
+}
+
+main .container .card a:hover {
+  color: #4EA250;
+}
+
+main .container .card .card-header {
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+
+main .container .card img {
   width: 100%;
+}
+
+main .container .new-post {
+  margin-top: 20px;
+  font-size: 16px;
+  text-transform: uppercase;
 }
 

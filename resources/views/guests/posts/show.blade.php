@@ -4,13 +4,13 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <a href="{{route('posts.index')}}">Go Back</a>
+      <a href="{{route('posts.index')}}" class="clr-green">Go Back</a>
     </div>
   </div>
     <div class="row justify-content-center">
-      <div class="col-md-3">
+      <div class="col-md-8">
         <div class="card">
-          <div class="card-header">{{$post->title}}</div>
+          <div class="card-header clr-green">{{$post->title}}</div>
           <img src="{{$post->image}}" alt="{{$post->title}}">
           <div class="card-body">
             {{$post->content}}

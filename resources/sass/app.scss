@@ -7,10 +7,63 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+.my-btn {
+  background-color: #7BA114;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.my-btn-tr {
+  background-color: #fff;
+  color: #7BA114;
+  border: 1px solid #7BA114;
+  padding: 3px 10px;
+  border-radius: 5px;
+}
+
+.clr-green {
+  color: #7BA114;
+}
+
+#app {
+  nav {
+    a {
+      color: #7BA114;
+      &:hover {
+        color: #4EA250;
+      }
+
+    }
+  }
+}
+
 main {
-  .card {
-    img {
-      width: 100%;
+  .container {
+    .card {
+      a {
+        text-decoration: none;
+        &:hover {
+          color: #4EA250;
+        }
+      }
+      .card-header {
+        min-height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+      }
+      img {
+        width: 100%;
+      }
+    }
+
+    .new-post {
+      margin-top: 20px;
+      font-size: 16px;
+      text-transform: uppercase;
     }
   }
 }

@@ -6,7 +6,7 @@
       @foreach ($posts as $post)
         <div class="col-md-3">
             <div class="card">
-              <a href="{{route('posts.show',['post'=>$post->slug])}}">
+              <a href="{{route('posts.show',['post'=>$post->slug])}}" class="clr-green text-center">
                 <div class="card-header">
                   {{$post->title}}
                 </div>

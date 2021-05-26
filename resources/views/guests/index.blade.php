@@ -13,7 +13,7 @@
         <style>
             html, body {
                 background-color: #fff;
-                color: #636b6f;
+                color: #7BA114;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
@@ -22,6 +22,13 @@
 
             .full-height {
                 height: 100vh;
+            }
+
+            body > div {
+              background-image: url('/img/home-bg.jpg');
+              background-position: center;
+              background-size: cover;
+              background-repeat: no-repeat;
             }
 
             .flex-center {
@@ -49,7 +56,7 @@
             }
 
             .links > a {
-                color: #636b6f;
+                color: #7BA114;
                 padding: 0 25px;
                 font-size: 13px;
                 font-weight: 600;

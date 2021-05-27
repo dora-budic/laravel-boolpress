@@ -87,17 +87,11 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Food Blog
+                    Boolpress
                 </div>
 
                 <div class="links">
-                  @if (Route::has('login'))
-                    @auth
-                      <a href="{{route('admin.posts.index')}}">Posts</a>
-                    @else
-                      <a href="{{route('posts.index')}}">Posts</a>
-                    @endauth
-                  @endif
+                  <a href="{{route('posts.index')}}">Posts</a>
                 </div>
             </div>
         </div>

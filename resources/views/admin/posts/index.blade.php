@@ -15,7 +15,6 @@
               <div class="card-header text-center">
                 {{$post->title}}
               </div>
-              <img src="{{$post->image}}" alt="{{$post->title}}">
             </a>
               <div class="card-body text-center">
                 <a href="{{route('admin.posts.edit',['post' => $post->id])}}" class="my-btn">Edit</a>

@@ -12,20 +12,24 @@
         <form action="{{route('admin.posts.update', ['post' => $post->id])}}" method="post">
           @csrf
           @method('PUT')
+
+          <div class="form-group">
+            <label for="category" class="clr-green">Title</label>
+            <select class="form-control @error('category') is-invalid @enderror" id="category" name="category_id">
+              <option value="">Select</option>
+              @foreach($categories as $category)
+                <option value="{{$category->id}}" {{$category->id == old('category_id', $post->category_id) ? 'selected' : ''}}>{{$category->name}}</option>
+              @endforeach
+            </select>
+            @error('title')
+              <small class="text-danger">{{$message}}</small>
+            @enderror
+          </div>
           <div class="form-group">
             <label for="title" class="clr-green">Title</label>
             <input class="form-control @error('title') is-invalid @enderror" id="title" type="text" name="title" value="{{old('title', $post->title)}}">
             <div>
               @error('title')
-                <small class="text-danger">{{$message}}</small>
-              @enderror
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="image" class="clr-green">Image link</label>
-            <input class="form-control @error('image') is-invalid @enderror" id="image" type="text" name="image" value="{{old('image', $post->image)}}">
-            <div>
-              @error('image')
                 <small class="text-danger">{{$message}}</small>
               @enderror
             </div>

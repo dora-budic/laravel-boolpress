@@ -11,7 +11,6 @@
       <div class="col-md-8">
         <div class="card">
           <div class="card-header clr-green">{{$post->title}}</div>
-          <img src="{{$post->image}}" alt="{{$post->title}}">
           <div class="card-body">
             {{$post->content}}
             <div class="mt-3">

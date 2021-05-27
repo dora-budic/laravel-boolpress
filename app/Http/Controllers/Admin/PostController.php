@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Post;
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
@@ -27,7 +28,9 @@ class PostController extends Controller
      */
     public function create()
     {
-      return view('admin.posts.create');
+      $categories = Category::All();
+
+      return view('admin.posts.create',compact('categories'));
     }
 
     /**
@@ -40,8 +43,8 @@ class PostController extends Controller
     {
       $request->validate([
         'title' => 'required|string|max:255',
-        'image' => 'string',
         'content' => 'required|string',
+        'category_id' => 'exists:categories,id|nullable'
       ]);
 
       $data = $request->all();
@@ -75,7 +78,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-      return view('admin.posts.edit',compact('post'));
+      $categories = Category::All();
+
+      return view('admin.posts.edit',compact('post','categories'));
     }
 
     /**
@@ -89,12 +94,12 @@ class PostController extends Controller
     {
       $request->validate([
         'title' => 'required|string|max:255',
-        'image' => 'string',
         'content' => 'required|string',
+        'category_id' => 'exists:categories,id|nullable'
       ]);
 
       $data = $request->all();
-      $data['slug'] = $this->generateSlug($data['title'], $post->title != $data['title']);
+      $data['slug'] = $this->generateSlug($data['title'], $post->title != $data['title'],$post->slug);
 
       $post->update($data);
 
@@ -114,13 +119,13 @@ class PostController extends Controller
       return redirect()->route('admin.posts.index');
     }
 
-    private function generateSlug(string $title, bool $change = true) {
-      $slug = Str::slug($title,'-');
+    private function generateSlug(string $title, bool $change = true, string $old_slug = '') {
 
       if (!$change) {
-        return $slug;
+        return $old_slug;
       }
 
+      $slug = Str::slug($title,'-');
       $slug_base = $slug;
       $contatore = 1;
 

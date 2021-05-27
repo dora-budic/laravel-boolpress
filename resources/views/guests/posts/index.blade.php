@@ -10,7 +10,6 @@
                 <div class="card-header">
                   {{$post->title}}
                 </div>
-                <img src="{{$post->image}}" alt="{{$post->title}}">
               </a>
             </div>
         </div>

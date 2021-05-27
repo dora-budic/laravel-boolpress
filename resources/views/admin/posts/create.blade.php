@@ -1,14 +1,13 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
-@section('content')
-<div class="container">
+@section('section')
   <div class="row">
     <div class="col-md-12 text-center">
       <h3 class="clr-green">New post</h3>
     </div>
   </div>
-    <div class="row justify-content-center">
-      <div class="col-md-8">
+    <div class="row">
+      <div class="col-md-12">
         <form action="{{route('admin.posts.store')}}" method="post">
           @csrf
           @method('POST')
@@ -47,5 +46,4 @@
         </form>
       </div>
     </div>
-</div>
 @endsection

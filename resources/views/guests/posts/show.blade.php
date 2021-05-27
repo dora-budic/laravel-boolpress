@@ -10,7 +10,14 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="card">
-          <div class="card-header clr-green">{{$post->title}}</div>
+          <div class="card-header clr-green">
+            <h1>{{$post->title}}</h1>
+            <h4>Category:
+              @if ($post->category)
+                <a href="{{route('category.index',['slug'=>$post->category ? $post->category->slug : ''])}}" class="clr-green">{{$post->category->name}}</a>
+              @endif
+            </h4>
+          </div>
           <div class="card-body">
             {{$post->content}}
           </div>

@@ -2,15 +2,28 @@
 
 @section('content')
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <a href="{{route('admin.posts.index')}}" class="clr-green text-uppercase">Go Back</a>
-    </div>
-  </div>
-    <div class="row justify-content-center">
+    <div class="row">
+      <div class="col-md-2">
+        <div class="menu">
+          <ul>
+            <li><a href="{{route('admin.index')}}"><i class="fas fa-home"></i>Dashboard</a></li>
+            <li><a href="{{route('admin.posts.index')}}"><i class="far fa-file-alt"></i>Posts</a></li>
+            <li><a href="#"><i class="far fa-user"></i>Users</a></li>
+            <li><a href="#"><i class="fas fa-font"></i>Categories</a></li>
+            <li><a href="#"><i class="fas fa-tag"></i>Tags</a></li>
+          </ul>
+        </div>
+      </div>
       <div class="col-md-8">
         <div class="card">
-          <div class="card-header clr-green">{{$post->title}}</div>
+          <div class="card-header clr-green">
+            <h1>{{$post->title}}</h1>
+            <h4>Category:
+              @if ($post->category)
+                <a href="{{route('category.index',['slug'=>$post->category ? $post->category->slug : ''])}}" class="clr-green">{{$post->category->name}}</a>
+              @endif
+            </h4>
+          </div>
           <div class="card-body">
             {{$post->content}}
             <div class="mt-3">

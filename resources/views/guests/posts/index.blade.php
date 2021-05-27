@@ -6,11 +6,12 @@
       @foreach ($posts as $post)
         <div class="col-md-3">
             <div class="card">
-              <a href="{{route('posts.show',['post'=>$post->slug])}}" class="clr-green text-center">
                 <div class="card-header">
                   {{$post->title}}
                 </div>
-              </a>
+                <div class="card-body text-center">
+                  <a href="{{route('posts.show',['slug'=>$post->slug])}}" class="my-btn">Show</a>
+                </div>
             </div>
         </div>
       @endforeach

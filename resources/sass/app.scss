@@ -41,6 +41,28 @@
 
 main {
   .container {
+    .menu {
+      ul {
+        list-style: none;
+        padding: 0;
+        text-align: left;
+        li {
+          margin-bottom: 10px;
+          a {
+            color: #7BA114;
+            font-size: 18px;
+            text-decoration: none;
+            i {
+              margin-right: 10px;
+            }
+
+            &:hover {
+              color: #4EA250;
+            }
+          }
+        }
+      }
+    }
     .card {
       a {
         text-decoration: none;
@@ -51,6 +73,7 @@ main {
       .card-header {
         min-height: 100px;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         font-size: 16px;

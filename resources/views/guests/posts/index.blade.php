@@ -6,7 +6,7 @@
       @foreach ($posts as $post)
         <div class="col-md-3">
             <div class="card">
-                <div class="card-header text-center">
+                <div class="card-header text-center clr-green">
                   {{$post->title}}
                 </div>
                 <div class="card-body text-center">

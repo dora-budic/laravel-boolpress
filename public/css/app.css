@@ -10070,3 +10070,6 @@ main .container .new-post {
   font-size: 16px;
   text-transform: uppercase;
 }
+main .container form img.thumb {
+  width: 200px;
+}

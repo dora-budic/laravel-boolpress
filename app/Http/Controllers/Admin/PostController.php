@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Post;
 use App\Category;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -44,14 +45,22 @@ class PostController extends Controller
       $request->validate([
         'title' => 'required|string|max:255',
         'content' => 'required|string',
-        'category_id' => 'exists:categories,id|nullable'
+        'category_id' => 'exists:categories,id|nullable',
+        'cover' => 'image|max:2000|nullable'
       ]);
 
       $data = $request->all();
+
+      $cover = NULL;
+      if(array_key_exists('cover', $data)) {
+        $cover = Storage::put('uploads',$data['cover']);
+      }
+
       $post = new Post();
       $post->fill($data);
 
       $post->slug = $this->generateSlug($post->title);
+      $post->cover = 'storage/' . $cover;
       $post->save();
 
       return redirect()->route('admin.posts.index');
@@ -95,11 +104,18 @@ class PostController extends Controller
       $request->validate([
         'title' => 'required|string|max:255',
         'content' => 'required|string',
-        'category_id' => 'exists:categories,id|nullable'
+        'category_id' => 'exists:categories,id|nullable',
+        'cover' => 'image|max:2000|nullable'
       ]);
 
       $data = $request->all();
+
       $data['slug'] = $this->generateSlug($data['title'], $post->title != $data['title'],$post->slug);
+
+      if(array_key_exists('cover', $data)) {
+        $cover = Storage::put('uploads',$data['cover']);
+        $data['cover'] = 'storage/' . $cover;
+      }
 
       $post->update($data);
 

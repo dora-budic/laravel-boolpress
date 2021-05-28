@@ -8,7 +8,7 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <form action="{{route('admin.posts.update', ['post' => $post->id])}}" method="post">
+      <form action="{{route('admin.posts.update', ['post' => $post->id])}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -38,6 +38,18 @@
           <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content" rows="8">{{old('content', $post->content)}}</textarea>
           <div>
             @error('content')
+              <small class="text-danger">{{$message}}</small>
+            @enderror
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="cover" class="clr-green">Cover</label>
+          <div>
+            <img class="thumb mb-2" src="{{asset($post->cover)}}" alt="{{$post->title}}">
+          </div>
+          <input class="form-control-file @error('cover') is-invalid @enderror" id="cover" type="file" name="cover" value="">
+          <div>
+            @error('cover')
               <small class="text-danger">{{$message}}</small>
             @enderror
           </div>

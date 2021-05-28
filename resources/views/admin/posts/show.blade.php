@@ -12,7 +12,10 @@
         </h4>
       </div>
       <div class="card-body">
-        {{$post->content}}
+        <img class="mb-3" src="{{asset($post->cover)}}" alt="{{$post->title}}">
+        <div>
+          {{$post->content}}
+        </div>
         <div class="mt-3">
           <a href="{{route('admin.posts.edit',['post' => $post->id])}}" class="my-btn">Edit</a>
           <form class="d-inline-block" action="{{route('admin.posts.destroy',['post' => $post->id])}}" method="post">

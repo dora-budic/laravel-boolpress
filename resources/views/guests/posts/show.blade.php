@@ -10,7 +10,7 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="card">
-          <div class="card-header clr-green">
+          <div class="card-header clr-green text-center">
             <h1>{{$post->title}}</h1>
             <h4>Category:
               @if ($post->category)
@@ -19,7 +19,10 @@
             </h4>
           </div>
           <div class="card-body">
-            {{$post->content}}
+            <img class="mb-3" src="{{asset($post->cover)}}" alt="{{$post->title}}">
+            <div class="text-justify">
+              {{$post->content}}
+            </div>
           </div>
         </div>
       </div>

@@ -13,7 +13,7 @@
       </div>
       <div class="card-body">
         <img class="mb-3" src="{{asset($post->cover)}}" alt="{{$post->title}}">
-        <div>
+        <div class="text-justify">
           {{$post->content}}
         </div>
         <div class="mt-3">

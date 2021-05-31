@@ -10,7 +10,7 @@
             <li><a href="{{route('admin.posts.index')}}"><i class="far fa-file-alt"></i>Posts</a></li>
             <li><a href="#"><i class="far fa-user"></i>Users</a></li>
             <li><a href="{{route('admin.categories.index')}}"><i class="fas fa-font"></i>Categories</a></li>
-            <li><a href="#"><i class="fas fa-tag"></i>Tags</a></li>
+            <li><a href="{{route('admin.tags.index')}}"><i class="fas fa-tag"></i>Tags</a></li>
           </ul>
         </div>
     </div>

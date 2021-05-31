@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('layouts.admin.app')
 
 @section('section')
   <div class="row">
@@ -16,7 +16,7 @@
           <label for="name" class="clr-green">Category name</label>
           <input class="form-control @error('name') is-invalid @enderror" id="name" type="text" name="name" value="{{old('name', $category->name)}}">
           <div>
-            @error('title')
+            @error('name')
               <small class="text-danger">{{$message}}</small>
             @enderror
           </div>

@@ -43,6 +43,17 @@
           </div>
         </div>
         <div class="form-group">
+          <label for="tag" class="clr-green">Tags</label>
+          <select class="form-control @error('tag_ids') is-invalid @enderror" id="tag" name="tag_ids[]" multiple>
+            @foreach($tags as $tag)
+              <option value="{{$tag->id}}" {{$post->tags->contains($tag) ? 'selected' : ''}}>{{$tag->name}}</option>
+            @endforeach
+          </select>
+          @error('tag_ids')
+            <small class="text-danger">{{$message}}</small>
+          @enderror
+        </div>
+        <div class="form-group">
           <label for="cover" class="clr-green">Cover</label>
           <div>
             <img class="thumb mb-2" src="{{asset($post->cover)}}" alt="{{$post->title}}">

@@ -13,7 +13,7 @@
           @method('POST')
 
           <div class="form-group">
-            <label for="category" class="clr-green">Title</label>
+            <label for="category" class="clr-green">Category</label>
             <select class="form-control @error('category') is-invalid @enderror" id="category" name="category_id">
               <option value="">Select</option>
               @foreach($categories as $category)
@@ -41,6 +41,17 @@
                 <small class="text-danger">{{$message}}</small>
               @enderror
             </div>
+          </div>
+          <div class="form-group">
+            <label for="tag" class="clr-green">Tags</label>
+            <select class="form-control @error('tag_ids') is-invalid @enderror" id="tag" name="tag_ids[]" multiple>
+              @foreach($tags as $tag)
+                <option value="{{$tag->id}}">{{$tag->name}}</option>
+              @endforeach
+            </select>
+            @error('tag_ids')
+              <small class="text-danger">{{$message}}</small>
+            @enderror
           </div>
           <div class="form-group">
             <label for="cover" class="clr-green">Cover</label>

@@ -16,6 +16,11 @@
         <div class="text-justify">
           {{$post->content}}
         </div>
+        <div>
+          @foreach($post->tags as $tag)
+            <a href="{{route('tag.index',['slug' => $tag->slug])}}">#{{$tag->name}}</a>
+          @endforeach
+        </div>
         <div class="mt-3">
           <a href="{{route('admin.posts.edit',['post' => $post->id])}}" class="my-btn">Edit</a>
           <form class="d-inline-block" action="{{route('admin.posts.destroy',['post' => $post->id])}}" method="post">

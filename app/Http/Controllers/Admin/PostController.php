@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Post;
 use App\Category;
+use App\Tag;
 use App\Mail\SendNewMail;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -32,8 +33,9 @@ class PostController extends Controller
     public function create()
     {
       $categories = Category::All();
+      $tags = Tag::All();
 
-      return view('admin.posts.create',compact('categories'));
+      return view('admin.posts.create',compact('categories','tags'));
     }
 
     /**
@@ -48,7 +50,8 @@ class PostController extends Controller
         'title' => 'required|string|max:255',
         'content' => 'required|string',
         'category_id' => 'exists:categories,id|nullable',
-        'cover' => 'image|max:2000|nullable'
+        'cover' => 'image|max:2000|nullable',
+        'tag_ids' => 'exists:tags,id'
       ]);
 
       $data = $request->all();
@@ -64,6 +67,10 @@ class PostController extends Controller
       $post->slug = $this->generateSlug($post->title);
       $post->cover = 'storage/' . $cover;
       $post->save();
+
+      if(array_key_exists('tag_ids',$data)) {
+        $post->tags()->attach($data['tag_ids']);
+      }
 
       Mail::to('mail@gmail.it')->send(new SendNewMail());
 
@@ -92,8 +99,9 @@ class PostController extends Controller
     public function edit(Post $post)
     {
       $categories = Category::All();
+      $tags = Tag::All();
 
-      return view('admin.posts.edit',compact('post','categories'));
+      return view('admin.posts.edit',compact('post','categories','tags'));
     }
 
     /**
@@ -109,7 +117,8 @@ class PostController extends Controller
         'title' => 'required|string|max:255',
         'content' => 'required|string',
         'category_id' => 'exists:categories,id|nullable',
-        'cover' => 'image|max:2000|nullable'
+        'cover' => 'image|max:2000|nullable',
+        'tag_ids' => 'exists:tags,id'
       ]);
 
       $data = $request->all();
@@ -122,6 +131,12 @@ class PostController extends Controller
       }
 
       $post->update($data);
+
+      if(array_key_exists('tag_ids',$data)) {
+        $post->tags()->sync($data['tag_ids']);
+      } else {
+        $post->tags()->detach();
+      }
 
       return redirect()->route('admin.posts.index');
     }

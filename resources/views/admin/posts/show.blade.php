@@ -7,7 +7,7 @@
         <h1>{{$post->title}}</h1>
         <h4>Category:
           @if ($post->category)
-            {{$post->category->name}}
+            <a href="{{route('category.index',['slug'=>$post->category ? $post->category->slug : ''])}}" class="clr-green">{{$post->category->name}}</a>
           @endif
         </h4>
       </div>

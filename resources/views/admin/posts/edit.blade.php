@@ -13,7 +13,7 @@
         @method('PUT')
 
         <div class="form-group">
-          <label for="category" class="clr-green">Title</label>
+          <label for="category" class="clr-green">Category</label>
           <select class="form-control @error('category') is-invalid @enderror" id="category" name="category_id">
             <option value="">Select</option>
             @foreach($categories as $category)
